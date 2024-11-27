@@ -1,20 +1,19 @@
-package com.example.app.network
+package com.example.app.model
 
-data class PriceResponse(
-    val USDBRL: Price? = null,
-    val EURBRL: Price? = null,
-    // Adicione mais pares de moedas conforme necessário
+data class CurrencyResponse(
+    val USDBRL: Currency? = null,
+    val EURBRL: Currency? = null,
 ) {
-    operator fun get(currencyPair: String): Price? {
+    operator fun get(currencyPair: String): Currency? {
         return when (currencyPair) {
             "USD" -> USDBRL
             "EUR" -> EURBRL
-            else -> null // Retornar null se o par não estiver mapeado
+            else -> null
         }
     }
 }
 
-data class Price (
+data class Currency (
     val code: String,         // Código da moeda original (ex: "USD")
     val codein: String,       // Código da moeda de destino (ex: "BRL")
     val name: String,         // Nome da taxa de câmbio (ex: "Dólar Americano/Real Brasileiro")
